@@ -5,6 +5,7 @@
   "logoUrl": "https://img.icons8.com/dotty/80/000000/view-file.png",
   "packageUrl": "https://duff.blog",
   "supportUrl": "https://duff.blog",
+  "devMode": true,
   "components": [
     {
       "id": "hello",
@@ -12,8 +13,8 @@
       "description": "Just says hello",
       "iconUrl": "https://img.icons8.com/material/24/000000/hello.png",
       "resource": {
-        "js": "gs://duffblog-react-example/hello/viz.js",
-        "config": "gs://duffblog-react-example/hello/hello.config.json"
+        "js": "gs://data_viz_one/hello/app.js",
+        "config": "gs://data_viz_one/hello/hello.config.json"
       }
     }
   ]
