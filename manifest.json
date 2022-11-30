@@ -13,9 +13,9 @@
       "description": "Just says hello",
       "iconUrl": "https://img.icons8.com/material/24/000000/hello.png",
       "resource": {
-        "js": "gs://data_viz_one1/app.js",
-        "config": "gs://data_viz_one1/hello.config.json",
-        "css": "gs://data_viz_one1/style.css"
+        "js": "gs://data_viz_one/dizzy/app.js",
+        "config": "gs://data_viz_one/dizzy/hello.config.json",
+        "css": "gs://data_viz_one/dizzy/style.css"
       }
     }
   ]

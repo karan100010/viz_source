@@ -4,6 +4,8 @@ import React from 'react'
 import CountUp from 'react-countup';
 import { useSpring, useSprings, animated } from "react-spring";
 //import anime.js
+//import css file style.css
+import './style.css'
 
 
 export function drawViz(data) {

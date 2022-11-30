@@ -42,10 +42,16 @@ module.exports = {
   module: {
       rules: [{
           test: /\.jsx?$/,
-        
+          //exclude any files ending with .css
+          
           use: {
               loader: 'babel-loader?cacheDirectory=true',
-          }
+          }},{
+            test: /\.css$/i,
+            
+            
+            use: ["style-loader", "css-loader"],
+            
       }]
     
   }
