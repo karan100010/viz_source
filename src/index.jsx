@@ -17,7 +17,7 @@ export function drawViz(data) {
   
   // Insert or replace the visualization element
 //add bank svg to a div
-  const bank = <img src={bankimg} alt="bank" className="bank" height="30%" weigth="30%" />;
+  const bank = <img src={bankimg} alt="bank" className="bank" height="100" weigth="100" />;
   //animate the bank svg on load such that it drops down
  
 
