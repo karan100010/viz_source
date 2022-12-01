@@ -53,10 +53,13 @@ module.exports = {
             use: ["style-loader", "css-loader"],
             
       },{
-        test: /\.(jpe?g|png|gif|svg)$/i, 
-        loader: 'file-loader',
-      }]
+        test: /\.svg$/i, 
+        loader: 'svg-url-loader',
+      }
+  ]
+ 
     
-  }
+  },
+  externals:'https://storage.googleapis.com/data_viz_one/dizzy/images/bank.gif'
   
 };

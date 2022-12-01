@@ -5,6 +5,9 @@ import CountUp from 'react-countup';
 import { useSpring, useSprings, animated } from "react-spring";
 //import anime.js
 //import css file style.css
+import anime from 'animejs/lib/anime.es.js';
+import bankimg from './images/bank-building-icon.svg'
+
 import './style.css'
 
 
@@ -13,6 +16,11 @@ export function drawViz(data) {
   // const props = useSpring({ number: nm, from: { number: 0 } })
   
   // Insert or replace the visualization element
+//add bank svg to a div
+  const bank = <img src={bankimg} alt="bank" className="bank" />;
+  //animate the bank svg on load such that it drops down
+ 
+
   let element = document.getElementById('viz')
   if (element) {
     element.parentNode?.removeChild(element)
@@ -20,6 +28,8 @@ export function drawViz(data) {
   element = document.createElement('div')
   element.setAttribute("id", "viz")
   document.body.appendChild(element)
+
+
   //reander the visualization
   // covert data.tables.DEFAULT[0].configId2 to a string and write to a variable
   // use that variable to pass to the Num function
@@ -37,8 +47,8 @@ export function drawViz(data) {
 
 
   // Actually render our component
-  ReactDOM.render(num, element)
-  console.log(data.tables.DEFAULT[0].configId1)
+  ReactDOM.render([num,bank], element)
+
   //call the Num fuction with argument number
  // ReactDOM.render(<Num num="hellox" />, element)
 }
@@ -53,7 +63,13 @@ function speak(text) {
   msg.lang = "hi";
   speechSynthesis.speak(msg);
 }
-
+anime({
+  targets: '.bank',
+  translateY: 100,
+  easing: 'easeInOutExpo',
+  duration: 1000,
+  delay: 1000,  
+  })
 //convart numbers to words if number in six figures say lakh and if in eight say crore and if number in four say hazar
 function covertNumToWords(num) {
   var num = num.split('.')[0];
@@ -147,3 +163,23 @@ function covHindi(num){
   easing: 'easeInOutExpo',
   })
 return animatedValue}
+// write a fuction that takes audio inputs from user and returns text
+
+function speechToText(){
+  var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
+  var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
+  var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
+  var recognition = new SpeechRecognition();
+  recognition.lang = 'en-US';
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 1;
+  recognition.start();
+  recognition.onresult = function(event) {
+  var speechResult = event.results[0][0].transcript;
+  console.log('You said: ', speechResult);}
+  recognition.onspeechend = function() {
+  recognition.stop();}
+  recognition.onerror = function(event) {
+  message.textContent = 'Error occurred in recognition: ' + event.error;}
+  
+  }
