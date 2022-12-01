@@ -10,5 +10,8 @@
     "outDir": "built-tsc"
   },
   // Tell tsc to find our code in a folder called src.
-  "include": ["src"]
+  "include": ["src"],
+  // Tell tsc to ignore the built-tsc folder.
+  "exclude": ["built-tsc"]
+
 }

@@ -1,12 +1,10 @@
-# if pwd =C://Users/karan/datastudio-react
-# then run the commands below
-# else cd into the directory and run the commands below
-if [ $(pwd) = "C://Users/karan/datastudio-react" ]; then
+
+if [ $(pwd) = "C:/xampp/htdocs/git/Working/Visualisation/viz_source" ]; then
   echo "Running commands in current directory"
 else
-  echo "Changing directory to C://Users/karan/datastudio-react"
-  cd C://Users/karan/datastudio-react
+  echo "Changing directory to C:/xampp/htdocs/git/Working/Visualisation/viz_source"
+  cd C:/xampp/htdocs/git/Working/Visualisation/viz_source
 fi
-npx tsc
-mkdir -p deploy/hello && cp manifest.json deploy/ && cp dist/viz.js deploy/hello/ && cp hello.config.json deploy/hello/
-npm run build && npm run prepare && gsutil cp -r deploy/* gs://data_viz_one
+npx webpack
+gsutil cp -r C:\xampp\htdocs\git\Working\Visualisation\viz_source\dist\dist/* gs://data_viz_one1
+exit 1
