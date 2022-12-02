@@ -7,8 +7,10 @@ import { useSpring, useSprings, animated } from "react-spring";
 //import css file style.css
 import anime from 'animejs/lib/anime.es.js';
 import bankimg from './images/bank-building-icon.svg'
+import rupee from './images/indian-rupee-coin-color-icon.svg'
 
 import './style.css'
+import { timeline } from 'animejs';
 
 
 export function drawViz(data) {
@@ -17,9 +19,12 @@ export function drawViz(data) {
   
   // Insert or replace the visualization element
 //add bank svg to a div
+const coin=<img onLoad={()=>animateBank()}  src={rupee} alt="coin" className='coin' width="30" height="30"></img>
   const bank = <img src={bankimg} alt="bank" className="bank" height="100" weigth="100" />;
   //animate the bank svg on load such that it drops down
- 
+  
+ //nest the bank ele,ent inside a div
+  const bankdiv = <div className="bankdiv">{bank}</div>;
 
   let element = document.getElementById('viz')
   if (element) {
@@ -28,6 +33,7 @@ export function drawViz(data) {
   element = document.createElement('div')
   element.setAttribute("id", "viz")
   document.body.appendChild(element)
+  const coindiv=<div className="coindiv">{coin}</div>
 
 
   //reander the visualization
@@ -47,7 +53,7 @@ export function drawViz(data) {
 
 
   // Actually render our component
-  ReactDOM.render([num,bank], element)
+  ReactDOM.render([num,coindiv,bankdiv], element)
 
   //call the Num fuction with argument number
  // ReactDOM.render(<Num num="hellox" />, element)
@@ -63,13 +69,19 @@ function speak(text) {
   msg.lang = "hi";
   speechSynthesis.speak(msg);
 }
-anime({
-  targets: '.bank',
-  translateY: 100,
-  easing: 'easeInOutExpo',
-  duration: 1000,
-  delay: 1000,  
-  })
+//animate the coin svg on load such that it drops down and rotates 360 degrees and revloves 
+function animateBank(){
+  anime({
+    targets: '.coin',
+    translateY: 100,  
+    rotate: '1turn',
+    duration: 2000,
+    easing: 'easeInOutSine'
+  });
+}
+
+
+//map hindi numbers to english numbers
 //convart numbers to words if number in six figures say lakh and if in eight say crore and if number in four say hazar
 function covertNumToWords(num) {
   var num = num.split('.')[0];

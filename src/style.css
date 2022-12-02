@@ -10,4 +10,22 @@ h1 {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-shadow: 0 1px 0 orange;
 }
-
+/* center the bankdiv class  */
+.bankdiv{
+    margin: 0 auto;
+    width: 50%;
+    padding: 10px;
+    z-index: 1;
+}
+.coindiv{
+    margin: 0 auto;
+    width: 50%;
+    padding: 10px;
+    z-index: 0;
+    
+}
+.coin{
+    
+    z-index: 0;
+    
+}
