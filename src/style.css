@@ -1,31 +1,34 @@
-    
 h1 {
-    text-align: center;
-    font-size: 2em;
-    font-weight: bold;
-    color: #000080;
-    margin: 0;
-    padding: 0;
-    line-height: 1.5em;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-shadow: 0 1px 0 orange;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  color: #000080;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5em;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-shadow: 0 1px 0 orange;
 }
-/* center the bankdiv class  */
-.bankdiv{
-    margin: 0 auto;
-    width: 50%;
-    padding: 10px;
-    z-index: 1;
+/* center theh bankdiv div */
+.bankdiv {
+  margin: 0 auto;
+  width: 500px;
+  padding: 10px;
+  background: transparent;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  text-align: center;
 }
-.coindiv{
-    margin: 0 auto;
-    width: 50%;
-    padding: 10px;
-    z-index: 0;
-    
-}
-.coin{
-    
-    z-index: 0;
-    
+/* center the coindiv div */
+/* make the coindiv go behind bankdiv */
+.coindiv {
+  margin: 0 auto;
+  width: 500px;
+  padding: 10px;
+  background: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  text-align: center;
+  position: relative;
+  z-index: -1;
 }
