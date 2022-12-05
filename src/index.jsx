@@ -16,6 +16,26 @@ export function drawViz(data) {
   // const [nm, setNum] = React.useState(0);
   // const props = useSpring({ number: nm, from: { number: 0 } })
 
+  //add a help button to a variable which uses speak function to speak the content of the variable helpText
+  const helpText = "यह विज़ुअल आपको दिखाता है कि आपके बैंक में कितने रुपये हैं";
+const help = (
+  <button
+    className="help"
+    onClick={() => {
+      speak(helpText);
+    }}
+  >
+    ?
+  </button>
+);
+
+const helpDiv = <div className="helpdiv">{help}</div>;
+
+
+
+
+
+  //add a help button to a div
   // Insert or replace the visualization element
   //add bank svg to a div
   const coin = (
@@ -33,7 +53,7 @@ export function drawViz(data) {
   );
   //animate the bank svg on load such that it drops down
 
-  //nest the bank ele,ent inside a div
+  //nest the bank element inside a div
   const bankdiv = <div className="bankdiv">{bank}</div>;
 
   let element = document.getElementById("viz");
@@ -67,7 +87,7 @@ export function drawViz(data) {
   //on hover over the div with id=viz speak the content of the div in h1 tag
 
   // Actually render our component
-  ReactDOM.render([coindiv, bankdiv, num], element);
+  ReactDOM.render([helpDiv,coindiv, bankdiv, num], element);
 
   //call the Num fuction with argument number
   // ReactDOM.render(<Num num="hellox" />, element)
@@ -235,3 +255,6 @@ function speechToText() {
     message.textContent = "Error occurred in recognition: " + event.error;
   };
 }
+
+
+
