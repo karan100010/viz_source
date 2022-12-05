@@ -17,7 +17,7 @@ export function drawViz(data) {
   // const props = useSpring({ number: nm, from: { number: 0 } })
 
   //add a help button to a variable which uses speak function to speak the content of the variable helpText
-  const helpText = "यह विज़ुअल आपको दिखाता है कि आपके बैंक में कितने रुपये हैं";
+  const helpText = "इस तस्वीर से पता चलता है कि आपके पास बैंक में कितना पैसा है, अगर आप अपना माउस निचे लिखी संख्या पर लेजा कर बाएं तरफ का बटन दबाएंगे तो वोह आपको कुल संख्या बता देगा";
 const help = (
   <button
     className="help"
