@@ -1,16 +1,21 @@
 import { ObjectFormat, objectTransform, subscribeToData } from '@google/dscc'
+import React from 'react';
 import ReactDOM from 'react-dom'
+import { useEffect, useRef } from 'react'
+import { Engine } from 'matter-js'
 import * as d3 from "d3";
+import Comp from './Hello.jsx';
+
 //import anime.js
 
 
 export function drawViz(data) {
   let element = document.getElementById('viz')
-  let dataValue1 = parseInt(data.tables.DEFAULT[0].DimensionOne)
-  let dataValue2 = parseInt(data.tables.DEFAULT[0].DimensionTwo)
-  let total= dataValue1+dataValue2
-  let radius1= dataValue1/total*100
-  let radius2= dataValue2/total*100
+  // let dataValue1 = parseInt(data.tables.DEFAULT[0].DimensionOne)
+  // let dataValue2 = parseInt(data.tables.DEFAULT[0].DimensionTwo)
+  // let total= dataValue1+dataValue2
+  // let radius1= dataValue1/total*100
+  // let radius2= dataValue2/total*100
   //crate a circle with the data value using d3
   if (element) {
     element.parentNode?.removeChild(element)
@@ -18,55 +23,69 @@ export function drawViz(data) {
   element = document.createElement('div')
   element.setAttribute("id", "viz")
   document.body.appendChild(element)
-  let svg1 = d3.select(element)
-  .append("svg")
-  .append("circle")
-  .attr("cx", 50)
-  .attr("cy", 50)
-  .attr("r",radius1)
-  .attr("fill", "red")
-  .attr("stroke", "black")
-  .attr("stroke-width", 2)
-  let svg2 = d3.select(element)
-  .append("svg")
+  // let svg1 = d3.select(element)
+  // .append("svg")
+  // .append("circle")
+  // .attr("cx", 50)
+  // .attr("cy", 50)
+  // .attr("r",radius1)
+  // .attr("fill", "red")
+  // .attr("stroke", "black")
+  // .attr("stroke-width", 2)
+  // let svg2 = d3.select(element)
+  // .append("svg")
 
-  .append("circle")
-  .attr("cx", 50)
-  .attr("cy", 50)
-  .attr("r", radius2)
-  .attr("fill", "blue")
-  .attr("stroke", "black")
-  .attr("stroke-width", 2)
+  // .append("circle")
+  // .attr("cx", 50)
+  // .attr("cy", 50)
+  // .attr("r", radius2)
+  // .attr("fill", "blue")
+  // .attr("stroke", "black")
+  // .attr("stroke-width", 2)
 
-  //add svg1 to a div
-  let div = d3.select(element)
-  .append("div")
-  .attr("id", "div1")
-  .attr("width", 100)
-  .attr("height", 100)
-  .append({svg1})
+  // //add svg1 to a div
+  // let div = d3.select(element)
+  // .append("div")
+  // .attr("id", "div1")
+  // .attr("width", 100)
+  // .attr("height", 100)
+  // .append({svg1})
 
-  //add svg2 to a div
-  let div2 = d3.select(element)
-  .append("div")
-  .attr("id", "div2")
-  .attr("width", 100)
-  .attr("height", 100)
-  .append({svg2})
+  // //add svg2 to a div
+  // let div2 = d3.select(element)
+  // .append("div")
+  // .attr("id", "div2")
+  // .attr("width", 100)
+  // .attr("height", 100)
+  // .append({svg2})
 
-  console.log((dataValue1/total)*100)
-  //append total value to the div3
-  let div3 = d3.select(element)
-  .append("div")
-  .attr("id", "div3")
-  .attr("width", 100)
-  .attr("height", 100)
-  .append("text")
-  .text({total})
-  
+  // console.log((dataValue1/total)*100)
+  // //append total value to the div3
+  // let div3 = d3.select(element)
+  // .append("div")
+  // .attr("id", "div3")
+  // .attr("width", 100)
+  // .attr("height", 100)
+  // .append("text")
+  // .text({total})
+//use matter.js to create a seesaw
+  //create a seesaw
+  //create a ball
+  //create a spring
+  //create a ground
+  //create a wall
+// var Engine = Matter.Engine,
+//     Render = Matter.Render,
+//     World = Matter.World,
+//     Bodies = Matter.Bodies,
+//     Body = Matter.Body,
+//     Constraint = Matter.Constraint,
+//     MouseConstraint = Matter.MouseConstraint,
+//     Mouse = Matter.Mouse;
+
   
 //rander div1 and div2 in react
-  ReactDOM.render([div, div2,div3], element)
+  ReactDOM.render(<Comp/>, element)
 
 
  

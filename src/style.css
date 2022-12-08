@@ -32,4 +32,45 @@ h1 {
   position: relative;
   z-index: -1;
 }
+/* fix the woman svg next to the bag*/
 
+
+
+#woman2 {
+  position: absolute;
+  top: 100px;
+  left: 50px;
+  z-index: 1; 
+  transform: scale(2.5);
+}
+
+#woman3{
+  position: absolute;
+  top: 50px;
+  left: 150px;
+  z-index: 1;
+  transform: scale(2.5);
+}
+#woman4{
+  position: absolute;
+  top: 50px;
+  left: 350px;
+  z-index: -1;
+  transform: scale(2.5);
+}
+#woman5{
+  position: absolute;
+  top: 100px;
+  left: 450px;
+  z-index: -1; 
+  transform: scale(2.5);
+  overflow: hidden;
+}
+/* 
+#woman5{
+  position: absolute;
+  top: 50px;
+  left: 500px;
+  z-index: 1;
+  transform: scale(2.5);
+} */
