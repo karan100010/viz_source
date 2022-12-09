@@ -4,21 +4,30 @@
       "id": "data",
       "label": "Data",
       "elements": [
+    
         {
-          "id": "DimensionOne",
-          "label": "Dimension one ",
-          "type": "METRIC", 
+          "id": "level1",
+          "label": "level1",
+          "type": "DIMENSION",
           "options": {
             "min": 1,
             "max": 1
         }
 
-        }
-        ,
+        },
+
         {
-          "id": "DimensionTwo",
-          "label": "Dimension two",
-          "type": "METRIC",
+          "id": "level2",
+          "label": "level2",
+          "type": "DIMENSION",
+          "options": {
+            "min": 1,
+            "max": 1
+        }},
+        {
+          "id": "level3",
+          "label": "level3",
+          "type": "DIMENSION",
           "options": {
             "min": 1,
             "max": 1
