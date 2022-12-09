@@ -28,6 +28,7 @@ const help = (
     className="help"
     onClick={() => {
       speak(helpText);
+      highlight();
     }}
   >
     ?
@@ -44,6 +45,18 @@ const womanGreenimg= <img className="woman" id="woman5" src={womanGreen} height=
 
 
 
+//highlight h1 on help button click 
+const highlight = () => {
+  let element = document.querySelector("h1");
+  //change color of border to red after 2 seconds 
+  setTimeout(() => {
+  element.style.border = "red solid 2px";
+  }, 4000);
+  //remove border after 6 seconds
+  setTimeout(() => {
+    element.style.border = "none";
+  }, 8000);
+};
 
 
   //add a help button to a div
