@@ -6,10 +6,11 @@
   import Tree from 'react-d3-tree';
   
   import OrgChartTree from './Hello.jsx';
+  import './style.css';
 
   //import anime.js
 
-
+//write a function to speak the text in hindi when click using speak function
   export function drawViz(data) {
   //create a tree where first noot is the root node and its value is india
 
@@ -39,13 +40,26 @@
   }
   console.log(getHeight())  
 
+
   function App() {
     const [dimensions, translate, containerRef] = useCenteredTree();
     return (
+     //speak whatever app content is clicked
      
-      <div id="treeWrapper" style={{ width: getWidth(), height: getHeight() }} ref={containerRef}>
-          <Tree  dimensions={dimensions}
-          translate={translate} data={orgChart}  />
+      <div
+      //speak hello world   
+        onClick={() =>
+          speak("hello")
+        }
+      id="treeWrapper" style={{ width: getWidth(), height: getHeight() }} ref={containerRef}>
+          <Tree 
+          
+          dimensions={dimensions}
+          translate={translate} data={orgChart}
+          rootNodeClassName="node__root"
+        branchNodeClassName="node__branch"
+        leafNodeClassName="node__leaf"
+          />
       </div>
     )
   
@@ -138,3 +152,6 @@ console.log(JSON.stringify(orgChart))
     easing: 'easeInOutExpo',
     })
   return animatedValue}
+
+
+

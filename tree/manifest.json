@@ -13,8 +13,8 @@
       "description": "creates a tree with diffrent attribute",
       "iconUrl": "https://img.icons8.com/material/24/000000/hello.png",
       "resource": {
-        "js": "gs://data_viz_one/tree/app.js",
-        "config": "gs://data_viz_one/tree/hello.config.json"
+        "js": "gs://data_viz_one1/tree/app.js",
+        "config": "gs://data_viz_one1/tree/hello.config.json"
       }
     }
   ]
