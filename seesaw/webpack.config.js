@@ -46,7 +46,13 @@ module.exports = {
           use: {
               loader: 'babel-loader?cacheDirectory=true',
           }
-      }]
+      },{
+        test: /\.css$/i,
+        
+        
+        use: ["style-loader", "css-loader"],
+        
+  }]
     
   }
   

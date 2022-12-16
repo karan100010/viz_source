@@ -36,5 +36,11 @@
         }
       ]
     }
+  ],
+  "interactions": [
+    {
+      "id": "click",
+      "supportedActions": ["FILTER"]
+    }
   ]
 }

@@ -1,4 +1,4 @@
-  import { ObjectFormat, objectTransform, subscribeToData,getWidth,getHeight } from '@google/dscc'
+  import { ObjectFormat, objectTransform, subscribeToData,getWidth,getHeight,sendInteraction,InteractionType} from '@google/dscc'
   import ReactDOM from 'react-dom'
   import * as d3 from "d3";
   import React from 'react';
@@ -7,6 +7,8 @@
   
   import OrgChartTree from './Hello.jsx';
   import './style.css';
+  import { useReactMediaRecorder } from "react-media-recorder";
+  
 
   //import anime.js
 
@@ -38,7 +40,76 @@
       orgChart.children.push({name:data.tables.DEFAULT[i].level1[0]})
     }
   }
-  console.log(getHeight())  
+  console.log(getHeight()) 
+let arr=[]
+
+//handle clicks on anywhare in the data viz and clear arr
+const handleclick=(data)=>{
+  //if data.interaction is false then clear arr
+  if(!data.interaction){
+    arr=[]
+
+
+
+  }
+}
+
+document.addEventListener("click",handleclick)
+  
+  const handleInteraction = (data,nodeData) => {
+    //get arryyes of level1,level2,level3
+    let level1=data.tables.DEFAULT.map((e)=>{return e.level1[0]})
+    let level2=data.tables.DEFAULT.map((e)=>{return e.level2[0]})
+    let level3=data.tables.DEFAULT.map((e)=>{return e.level3[0]})
+    //if data.name in level1,level2,level3 write variable column = level1,level2,level3
+    let column=""
+    let concepts=""
+//create a array and push the nodeData.data.name in it and see if if it is in the array if yes then push it out of the array
+
+
+if(arr.includes(nodeData.data.name)){
+  arr.pop()
+}
+else
+[arr.push(nodeData.data.name)]
+
+    if(level1.includes(nodeData.data.name)){
+      column="level1"
+      concepts=data.fields.level1[0].id
+
+    }
+    if(level2.includes(nodeData.data.name)){
+
+      column="level2"
+      column=data.fields.level2[0].id
+    }
+    if(level3.includes(nodeData.data.name)){
+      column="level3"
+      column=data.fields.level3[0].id
+    }
+
+   //send filter with column and data.name
+    const interactionData = {
+      concepts: [column],
+      values: [[nodeData.data.name]]
+      
+
+  }
+  const interactionId = "click";
+
+ 
+
+ 
+
+  // the interaction type - only FILTER is supported right now
+  const FILTER = InteractionType.FILTER;
+
+  // send the interaction to the parent frame
+  sendInteraction(interactionId,FILTER, interactionData);
+  // 
+
+   //speak(nodeData.data.name)
+   console.log(JSON.stringify(interactionData));}
 
 
   function App() {
@@ -47,23 +118,39 @@
      //speak whatever app content is clicked
      
       <div
-      //speak hello world   
-        onClick={() =>
-          speak("hello")
-        }
+      //speak the text of the node when clicked
+       
       id="treeWrapper" style={{ width: getWidth(), height: getHeight() }} ref={containerRef}>
           <Tree 
           
           dimensions={dimensions}
           translate={translate} data={orgChart}
+          //speak the text of the node when clicked
+          onNodeClick={(nodeData, evt) =>{handleInteraction(data,nodeData)}} 
           rootNodeClassName="node__root"
         branchNodeClassName="node__branch"
-        leafNodeClassName="node__leaf"
+        leafNodeClassName="node__leaf"  
           />
       </div>
     )
   
   }
+ 
+
+const RecordView = () => {
+  const { status, startRecording, stopRecording, mediaBlobUrl } =
+    useReactMediaRecorder({ video: false, type: "audio/wav" });
+
+  return (
+    <div>
+      <p>{status}</p>
+      <button onClick={startRecording}>Start Recording</button>
+      <button onClick={stopRecording}>Stop Recording</button>
+      <video src={mediaBlobUrl} controls autoPlay loop />
+    </div>
+  );
+  }
+    
 
  
  //add level 2 to the tree
@@ -95,7 +182,7 @@
 
 console.log(JSON.stringify(orgChart))
   //render the tree
-  ReactDOM.render(<App/>, element);}
+  ReactDOM.render([<App/>,RecordView], element);}
 
   // Connect our drawViz function to Data Studio
   subscribeToData(drawViz, { transform: objectTransform })
@@ -107,6 +194,8 @@ console.log(JSON.stringify(orgChart))
     msg.lang = "hi";
     speechSynthesis.speak(msg);
   }
+
+
 
 
     
