@@ -7,7 +7,7 @@
   
   import OrgChartTree from './Hello.jsx';
   import './style.css';
-  import { useReactMediaRecorder } from "react-media-recorder";
+  // import { useReactMediaRecorder } from "react-media-recorder";
   
 
   //import anime.js
@@ -137,19 +137,19 @@ else
   }
  
 
-const RecordView = () => {
-  const { status, startRecording, stopRecording, mediaBlobUrl } =
-    useReactMediaRecorder({ video: false, type: "audio/wav" });
+// const RecordView = () => {
+//   const { status, startRecording, stopRecording, mediaBlobUrl } =
+//     useReactMediaRecorder({ video: false, type: "audio/wav" });
 
-  return (
-    <div>
-      <p>{status}</p>
-      <button onClick={startRecording}>Start Recording</button>
-      <button onClick={stopRecording}>Stop Recording</button>
-      <video src={mediaBlobUrl} controls autoPlay loop />
-    </div>
-  );
-  }
+//   return (
+//     <div>
+//       <p>{status}</p>
+//       <button onClick={startRecording}>Start Recording</button>
+//       <button onClick={stopRecording}>Stop Recording</button>
+//       <video src={mediaBlobUrl} controls autoPlay loop />
+//     </div>
+//   );
+//   }
     
 
  
@@ -182,7 +182,7 @@ const RecordView = () => {
 
 console.log(JSON.stringify(orgChart))
   //render the tree
-  ReactDOM.render([<App/>,RecordView], element);}
+  ReactDOM.render([<App/>], element);}
 
   // Connect our drawViz function to Data Studio
   subscribeToData(drawViz, { transform: objectTransform })
