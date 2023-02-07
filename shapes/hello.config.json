@@ -1,0 +1,31 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "label": "Data",
+      "elements": [
+        {
+          "id": "DimensionOne",
+          "label": "Dimension one ",
+          "type": "METRIC", 
+          "options": {
+            "min": 1,
+            "max": 1
+        }
+
+        }
+        ,
+        {
+          "id": "DimensionTwo",
+          "label": "Dimension two",
+          "type": "METRIC",
+          "options": {
+            "min": 1,
+            "max": 1
+        }
+
+        }
+      ]
+    }
+  ]
+}

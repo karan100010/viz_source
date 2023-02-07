@@ -93,7 +93,12 @@ Example.catapult = function() {
     });
 
    
-    (rerender(engine));
+    (function rerender() {
+     
+      Matter.Engine.update(engine);
+      requestAnimationFrame(rerender);
+    })
+
 }(
   
 );
@@ -116,37 +121,7 @@ document.getElementById("stack").style.outline = "0px";
   // Connect our drawViz function to Data Studio
   subscribeToData(drawViz, { transform: objectTransform })
   //text to speech function in hindi
-  function rerender(engine) {
-    // get the bodies in the engine
-    var bodies = Matter.Composite.allBodies(engine.world);
   
-    // loop through each body
-    for (var i = 0; i < bodies.length; i++) {
-      var body = bodies[i];
-  
-      // check if the body has a render object (i.e. it is visible)
-      if (body && body.render && body.render.visible) {
-        // get the DOM element for the body
-        var element = body.render.element;
-  
-        // make sure the element is defined
-        if (element) {
-          // get the body's position and dimensions
-          var position = body.position;
-          var width = body.render.sprite.texture.frame.width;
-          var height = body.render.sprite.texture.frame.height;
-  
-          // update the element's style to match the body's position and dimensions
-          element.style.left = position.x - width / 2 + "px";
-          element.style.top = position.y - height / 2 + "px";
-          element.style.width = width + "px";
-          element.style.height = height + "px";
-        }
-      }
-    }
-  }
-  
-
   function speak(text) {
     var msg = new SpeechSynthesisUtterance();
     msg.text = text;
@@ -247,4 +222,3 @@ document.getElementById("stack").style.outline = "0px";
     easing: 'easeInOutExpo',
     })
   return animatedValue}
-  
