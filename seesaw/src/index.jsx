@@ -28,6 +28,7 @@
   const Scene = () => {
     const requestRef = useRef();
     const boxRef = useRef();
+    const box1Ref = useRef();
     const groundRef = useRef();
     
   let dataValue1 = parseInt(data.tables.DEFAULT[0].DimensionOne)
@@ -41,6 +42,18 @@
   
       const box = {
         body: Matter.Bodies.circle(150, 0,radius1),
+        elem: boxRef1.current,
+        render() {
+          const {x, y} = this.body.position;
+          this.elem.style.top = `${y - 20}px`;
+          this.elem.style.left = `${x - 20}px`;
+          this.elem.style.transform = `rotate(${this.body.angle}rad)`;
+        },
+      };
+
+      //create a circle with matter.js of radius radius2
+      const box2 = {
+        body: Matter.Bodies.circle(250, 0,radius2),
         elem: boxRef.current,
         render() {
           const {x, y} = this.body.position;
@@ -80,6 +93,7 @@
   
     return (
       <Fragment>
+        <div id="box1" ref={boxRef1}></div>
         <div id="box" ref={boxRef}></div>
         <div id="ground" ref={groundRef}></div>
       </Fragment>
